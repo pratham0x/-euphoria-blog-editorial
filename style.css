@@ -11,6 +11,8 @@ body {
   width: 100%;
   height: 100%;
   font-family: inter;
+overflow: hidden;
+
 }
 /* HEADER START */
 
@@ -81,20 +83,31 @@ body {
   height: 100%;
   object-fit: cover;
 }
-.pill-left,
-.pill-right {
+
+.pill-right,
+.pill-left {
   position: absolute;
   padding: 0.4rem 0.4rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 600;
   color: #1a05058f;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
   z-index: 2;
 }
 
 .pill-left {
   right: 5px;
+  backdrop-filter: 16px;
+    background-color: #cbbaba4e;
+    z-index: 2  ;
+}
+
+.pill-right {
+  left: 5px;
+  background-color: #cbbaba4e;
+  backdrop-filter: 16px;
+  z-index: 2;
 }
 
 .blog-card1 {
@@ -155,25 +168,48 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
- 
-}
-.pill-left-music,
-.pill-right-music {
-  position: absolute;
-  padding: 0.4rem 0.4rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #170f0f46;
-  backdrop-filter: blur(20px);
-  z-index: 2;
-}
-.pill-left-music {
-  right: 12px;
 }
 
-.pill-right-music {
-  left: 12px;
+
+.blog-card2 {
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+/*Image lift effect animation*/
+
+.blog-card2 img {
+  transition: transform 1.2s ease;
+}
+
+.blog-card2:hover img {
+  transform: scale(1.08);
+}
+/*card lift transition effect*/
+.blog-card2:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.blog-card2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25),
+    transparent 70%
+  );
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.8s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.blog-card2:hover::after {
+  opacity: 1;
+  transform: translateX(100%);
 }
 
 /* blog CARD-3*/
@@ -185,7 +221,7 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   backdrop-filter: 10px;
-  -webkit-backdrop-filter:blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   overflow: hidden;
   z-index: 1;
 }
@@ -193,28 +229,50 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-
 }
-.pill-left-aesthetic,
-.pill-right-aesthetic {
+
+.blog-card3 {
+  transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.5s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+/*Image lift effect animation*/
+
+.blog-card3 img {
+  transition: transform 1.2s ease;
+}
+
+.blog-card3:hover img {
+  transform: scale(1.08);
+}
+/*card lift transition effect*/
+.blog-card3:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.blog-card3::after {
+  content: "";
   position: absolute;
-  padding: 0.4rem 0.4rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #0f050577;
-  backdrop-filter: blur(24px);
-  z-index: 2;
-}
-.pill-left-aesthetic {
-  right: 12px;
-}
-
-.pill-right-aesthetic {
-  left: 12px;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.25),
+    transparent 70%
+  );
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.8s ease, opacity 0.3s ease;
+  pointer-events: none;
 }
 
-.glassoverlay{
+.blog-card3:hover::after {
+  opacity: 1;
+  transform: translateX(100%);
+}
+
+.glassoverlay {
   position: absolute;
   left: 14px;
   right: 14px;
@@ -225,12 +283,12 @@ body {
   -webkit-backdrop-filter: (14px);
   border-radius: 14px;
   border: 1px solid rgba(225, 225, 225, 0.35);
-  color: #000000;
+  color: #000000ad;
   z-index: 3;
   padding-bottom: 48px;
 }
 
-.glassoverlay{
+.glassoverlay {
   transition: transform 0.5s cubic-bezier(0.22, 0.61, 0.36, 1),
     background-color 0.4s ease;
 }
@@ -323,6 +381,16 @@ body {
 }
 
 .blog-card1:hover .share-network {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blog-card2:hover .share-network {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.blog-card3:hover .share-network {
   opacity: 1;
   transform: translateY(0);
 }
