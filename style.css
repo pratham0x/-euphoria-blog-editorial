@@ -17,10 +17,37 @@ overflow: hidden;
 /* HEADER START */
 
 .site-header {
+  position: relative;
   text-align: center;
   padding: 40px;
   font-size: larger;
 }
+.mood-btn {
+  position: absolute;
+  top: 32px;
+  right: 32px;
+
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+
+  border: 1px solid rgba(255,255,255,0.4);
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.mood-btn:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.3);
+}
+
 .site-header h1 {
   letter-spacing: 10px;
   font-weight: 700;

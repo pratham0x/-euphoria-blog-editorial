@@ -19,7 +19,11 @@
 
   <body>
     <header class="site-header">
-      <h1>EUPHORIA</h1>
+      <button class="mood-btn" id="lofi-audio" aria-label="Enter the Mood">
+    ▶
+  </button>
+
+      <h1>EUPHORIA</h1><button>
       <p>Curated articles on philosophy, music, and aesthetic living.</p>
     </header>
 
@@ -161,6 +165,55 @@
               </button>
         </div>
       </div>
+      <audio id="lofi-audio" loop preload="auto">
+  <source src="assets/jokaim-karud-dreams-lofi.mp3" type="audio/mpeg">
+</audio>
+<script>
+  const audio = document.getElementById("ambient-audio");
+  const btn = document.querySelector(".mood-btn");
+  const icon = document.getElementById("mood-icon");
+
+  let isPlaying = false;
+  audio.volume = 0.0;
+
+  function fadeIn() {
+    audio.play();
+    let v = 0;
+    const fade = setInterval(() => {
+      if (v < 0.4) {
+        v += 0.02;
+        audio.volume = v;
+      } else {
+        clearInterval(fade);
+      }
+    }, 50);
+  }
+
+  function fadeOut() {
+    let v = audio.volume;
+    const fade = setInterval(() => {
+      if (v > 0) {
+        v -= 0.02;
+        audio.volume = v;
+      } else {
+        clearInterval(fade);
+        audio.pause();
+      }
+    }, 50);
+  }
+
+  btn.addEventListener("click", () => {
+    if (!isPlaying) {
+      fadeIn();
+      icon.textContent = "❚❚";
+    } else {
+      fadeOut();
+      icon.textContent = "▶";
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
+
     </main>
   </body>
 </html>
