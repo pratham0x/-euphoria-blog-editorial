@@ -19,11 +19,11 @@
 
   <body>
     <header class="site-header">
-      <button class="mood-btn" id="lofi-audio" aria-label="Enter the Mood">
+      <button class="mood-btn" id="mood-icon" aria-label="Enter the Mood">
     ▶
   </button>
 
-      <h1>EUPHORIA</h1><button>
+      <h1>EUPHORIA</h1>
       <p>Curated articles on philosophy, music, and aesthetic living.</p>
     </header>
 
@@ -166,10 +166,11 @@
         </div>
       </div>
       <audio id="lofi-audio" loop preload="auto">
-  <source src="assets/jokaim-karud-dreams-lofi.mp3" type="audio/mpeg">
+  <source src="assets/lofi-audio.mp3" type="audio/mpeg">
 </audio>
+
 <script>
-  const audio = document.getElementById("ambient-audio");
+  const audio = document.getElementById("lofi-audio");
   const btn = document.querySelector(".mood-btn");
   const icon = document.getElementById("mood-icon");
 
@@ -213,6 +214,27 @@
     isPlaying = !isPlaying;
   });
 </script>
+<script>
+  document.querySelectorAll(".read-more").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault(); // remove this if navigating to another page
+
+      for (let i = 0; i < 14; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+
+        confetti.style.setProperty("--x", `${Math.random() * 200 - 100}px`);
+        confetti.style.setProperty("--y", `${Math.random() * 200 - 100}px`);
+        confetti.style.setProperty("--hue", Math.random() * 360);
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 900);
+      }
+    });
+  });
+</script>
+
 
     </main>
   </body>

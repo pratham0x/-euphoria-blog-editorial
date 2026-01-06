@@ -48,6 +48,7 @@ overflow: hidden;
   background: rgba(255,255,255,0.3);
 }
 
+
 .site-header h1 {
   letter-spacing: 10px;
   font-weight: 700;
@@ -421,3 +422,25 @@ overflow: hidden;
   opacity: 1;
   transform: translateY(0);
 }
+
+.confetti {
+position: fixed;
+  width: 18px;
+  height: 18px;
+  border-radius: 2px;
+  background: hsl(var(--hue), 80%, 60%);
+  top: 50%;
+  left: 50%;
+  pointer-events: none;
+  z-index: 9999;
+
+  animation: confetti-pop 900ms ease-out forwards;
+}
+
+@keyframes confetti-pop {
+  to {
+    transform: translate(var(--x), var(--y)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
