@@ -217,18 +217,23 @@
 <script>
   document.querySelectorAll(".read-more").forEach(btn => {
     btn.addEventListener("click", (e) => {
-      e.preventDefault(); // remove this if navigating to another page
+      e.preventDefault();
 
-      for (let i = 0; i < 14; i++) {
+      const rect = btn.getBoundingClientRect();
+      const originX = rect.left + rect.width / 2;
+      const originY = rect.top + rect.height / 2;
+
+      for (let i = 0; i < 12; i++) {
         const confetti = document.createElement("div");
         confetti.className = "confetti";
 
+        confetti.style.setProperty("--left", `${originX}px`);
+        confetti.style.setProperty("--top", `${originY}px`);
         confetti.style.setProperty("--x", `${Math.random() * 200 - 100}px`);
         confetti.style.setProperty("--y", `${Math.random() * 200 - 100}px`);
         confetti.style.setProperty("--hue", Math.random() * 360);
 
         document.body.appendChild(confetti);
-
         setTimeout(() => confetti.remove(), 900);
       }
     });
